@@ -3,6 +3,7 @@
     <meta charset='utf-8'>
     <title>簡単な数学の問題</title>
     <link rel="stylesheet" href="example.css">
+    
     <script>function getlevel(){
         if(document.getElementById('word').value == "851750"){document.cookie = "yuki=True; path=/;";}else{
         let req = new XMLHttpRequest();
@@ -10,11 +11,13 @@
         req.open("GET", "/answer?q="+document.getElementById('word').value);
         req.send();}
     }</script>
+    
 </head>
+<body>
     <h3><font color=”#ffffff”>簡単な数学の問題です。</font></h3><br>
     <h3><font color=”#ffffff”>答えを白い枠に記入して、枠の下にある確認ボタンを押してください。</font></h3><br>
     <h3><font color=”#ffffff”>85175×10=？</font></h3><br>
-    <input id="word" type="text"></input><input type="button" onClick="getlevel()"><big><font color=”#f5f5f5”>確認</font></big></input>
-    <div id="info">
+    <input id="word" type="text"></input><input type="button" onClick="getlevel()"><h3><font color=”#ffffff”>確認<。</font></h3></input>
+     <div id="info">
 </body>
 </html>

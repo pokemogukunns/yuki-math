@@ -171,12 +171,19 @@ from typing import Union
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
 app.mount("/word", StaticFiles(directory="./blog", html=True), name="static")
+app.mount("/worder", StaticFiles(directory="./game", html=True), name="static")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 from fastapi.templating import Jinja2Templates
 template = Jinja2Templates(directory='templates').TemplateResponse
 
-
+@app.get("/suika", response_class=HTMLResponse)
+def home(response: Response,request: Request,game: Union[str] = Cookie(None)):
+    if check_cokie(game):
+        response.set_cookie("game","True",max_age=60 * 60 * 24 * 7)
+        return suika("index.html",{"request": request})
+    print(check_cokie(game))
+    return redirect("/worder")
 
 
 
